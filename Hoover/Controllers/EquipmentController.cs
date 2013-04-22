@@ -14,6 +14,7 @@ namespace Hoover.Controllers
 
         private HOOVEREntities db = new HOOVEREntities();
 
+        // Return list of equipment
         public ViewResult Index()
         {
             return View(db.Equipment.ToList());
