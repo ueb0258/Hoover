@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HOOVERModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="HOOVERModelStoreContainer">
+    <EntitySet Name="DailyFuelLog" EntityType="HOOVERModel.Store.DailyFuelLog" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Equipment" EntityType="HOOVERModel.Store.Equipment" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="JobMaintLog" EntityType="HOOVERModel.Store.JobMaintLog" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MaintCheck" EntityType="HOOVERModel.Store.MaintCheck" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MaintCheckLog" EntityType="HOOVERModel.Store.MaintCheckLog" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MaintCheckPartsNotesLog" EntityType="HOOVERModel.Store.MaintCheckPartsNotesLog" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MaintCheckStep" EntityType="HOOVERModel.Store.MaintCheckStep" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MaintSchedule" EntityType="HOOVERModel.Store.MaintSchedule" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Parts" EntityType="HOOVERModel.Store.Parts" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="DailyFuelLog">
+    <Key>
+      <PropertyRef Name="DailyFueLogId" />
+    </Key>
+    <Property Name="DailyFueLogId" Type="bigint" Nullable="false" />
+    <Property Name="EquipmentId" Type="int" Nullable="false" />
+    <Property Name="Date" Type="date" Nullable="false" />
+    <Property Name="MeterReading" Type="decimal" />
+    <Property Name="Fuel" Type="decimal" />
+    <Property Name="EngineOil" Type="decimal" />
+    <Property Name="GearOil" Type="decimal" />
+    <Property Name="HydrolicOil" Type="decimal" />
+    <Property Name="RepairNotes" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="Equipment">
+    <Key>
+      <PropertyRef Name="EquipmentId" />
+    </Key>
+    <Property Name="EquipmentId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="EquipmentNumber" Type="varchar" Nullable="false" MaxLength="64" />
+    <Property Name="Model" Type="varchar" Nullable="false" MaxLength="64" />
+    <Property Name="Description" Type="varchar" MaxLength="1028" />
+    <Property Name="SerialNumber" Type="varchar" MaxLength="128" />
+  </EntityType>
+  <EntityType Name="JobMaintLog">
+    <Key>
+      <PropertyRef Name="MaintId" />
+    </Key>
+    <Property Name="MaintId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="MaintDate" Type="date" Nullable="false" />
+    <Property Name="JobId" Type="varchar" Nullable="false" MaxLength="32" />
+    <Property Name="MeterHours" Type="int" Nullable="false" />
+    <Property Name="AccumOprHours" Type="int" Nullable="false" />
+    <Property Name="Fuel" Type="int" />
+    <Property Name="MotorOil" Type="int" />
+    <Property Name="TransOil" Type="int" />
+    <Property Name="HydOil" Type="int" />
+    <Property Name="FinalDrive" Type="int" />
+    <Property Name="AntiFreeze" Type="int" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MaintCheck">
+    <Key>
+      <PropertyRef Name="MaintCheckId" />
+    </Key>
+    <Property Name="MaintCheckId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="MaintCheckName" Type="varchar" Nullable="false" MaxLength="128" />
+    <Property Name="MaintCheckDesctription" Type="varchar(max)" />
+    <Property Name="Interval" Type="int" Nullable="false" />
+    <Property Name="IntervalTypeId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MaintCheckLog">
+    <Key>
+      <PropertyRef Name="MaintCheckLogId" />
+    </Key>
+    <Property Name="MaintCheckLogId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="MaintCheckLogDate" Type="date" Nullable="false" />
+    <Property Name="EquipmentId" Type="int" Nullable="false" />
+    <Property Name="MaintCheckId" Type="int" Nullable="false" />
+    <Property Name="ActualReading" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MaintCheckPartsNotesLog">
+    <Key>
+      <PropertyRef Name="MaintCheckPartsNotesLog" />
+    </Key>
+    <Property Name="MaintCheckPartsNotesLog" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="MaintCheckLogId" Type="int" Nullable="false" />
+    <Property Name="PartsId" Type="int" />
+    <Property Name="RepairNotes" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="MaintCheckStep">
+    <Key>
+      <PropertyRef Name="MaintCheckStepId" />
+    </Key>
+    <Property Name="MaintCheckStepId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="MaintCheckId" Type="int" Nullable="false" />
+    <Property Name="StepDescription" Type="varchar(max)" Nullable="false" />
+    <Property Name="Deprecated" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MaintSchedule">
+    <Key>
+      <PropertyRef Name="MaintScheduleId" />
+    </Key>
+    <Property Name="MaintScheduleId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="EquipmentId" Type="int" Nullable="false" />
+    <Property Name="MaintCheckId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Parts">
+    <Key>
+      <PropertyRef Name="PartsId" />
+    </Key>
+    <Property Name="PartsId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="PartName" Type="varchar" Nullable="false" MaxLength="128" />
+    <Property Name="PartModelNumber" Type="varchar" MaxLength="128" />
+    <Property Name="PartDescription" Type="varchar(max)" />
+    <Property Name="PartCost" Type="decimal" />
+  </EntityType>
+</Schema>

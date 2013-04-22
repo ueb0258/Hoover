@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Hoover.Models.Equipment>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Equipment List</h2>
+<table>
+    <tr>
+        <th>Equipment Number</th>
+        <th>Model</th>
+        <th>Description</th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.EquipmentNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Model)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+    </tr>
+}
+
+</table>

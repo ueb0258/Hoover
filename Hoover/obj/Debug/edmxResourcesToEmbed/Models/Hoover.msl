@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="HOOVERModelStoreContainer" CdmEntityContainer="HOOVEREntities">
+    <EntitySetMapping Name="DailyFuelLog">
+      <EntityTypeMapping TypeName="HOOVERModel.DailyFuelLog">
+        <MappingFragment StoreEntitySet="DailyFuelLog">
+          <ScalarProperty Name="DailyFueLogId" ColumnName="DailyFueLogId" />
+          <ScalarProperty Name="EquipmentId" ColumnName="EquipmentId" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="MeterReading" ColumnName="MeterReading" />
+          <ScalarProperty Name="Fuel" ColumnName="Fuel" />
+          <ScalarProperty Name="EngineOil" ColumnName="EngineOil" />
+          <ScalarProperty Name="GearOil" ColumnName="GearOil" />
+          <ScalarProperty Name="HydrolicOil" ColumnName="HydrolicOil" />
+          <ScalarProperty Name="RepairNotes" ColumnName="RepairNotes" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Equipment">
+      <EntityTypeMapping TypeName="HOOVERModel.Equipment">
+        <MappingFragment StoreEntitySet="Equipment">
+          <ScalarProperty Name="EquipmentId" ColumnName="EquipmentId" />
+          <ScalarProperty Name="EquipmentNumber" ColumnName="EquipmentNumber" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="JobMaintLog">
+      <EntityTypeMapping TypeName="HOOVERModel.JobMaintLog">
+        <MappingFragment StoreEntitySet="JobMaintLog">
+          <ScalarProperty Name="MaintId" ColumnName="MaintId" />
+          <ScalarProperty Name="MaintDate" ColumnName="MaintDate" />
+          <ScalarProperty Name="JobId" ColumnName="JobId" />
+          <ScalarProperty Name="MeterHours" ColumnName="MeterHours" />
+          <ScalarProperty Name="AccumOprHours" ColumnName="AccumOprHours" />
+          <ScalarProperty Name="Fuel" ColumnName="Fuel" />
+          <ScalarProperty Name="MotorOil" ColumnName="MotorOil" />
+          <ScalarProperty Name="TransOil" ColumnName="TransOil" />
+          <ScalarProperty Name="HydOil" ColumnName="HydOil" />
+          <ScalarProperty Name="FinalDrive" ColumnName="FinalDrive" />
+          <ScalarProperty Name="AntiFreeze" ColumnName="AntiFreeze" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MaintCheck">
+      <EntityTypeMapping TypeName="HOOVERModel.MaintCheck">
+        <MappingFragment StoreEntitySet="MaintCheck">
+          <ScalarProperty Name="MaintCheckId" ColumnName="MaintCheckId" />
+          <ScalarProperty Name="MaintCheckName" ColumnName="MaintCheckName" />
+          <ScalarProperty Name="MaintCheckDesctription" ColumnName="MaintCheckDesctription" />
+          <ScalarProperty Name="Interval" ColumnName="Interval" />
+          <ScalarProperty Name="IntervalTypeId" ColumnName="IntervalTypeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MaintCheckLog">
+      <EntityTypeMapping TypeName="HOOVERModel.MaintCheckLog">
+        <MappingFragment StoreEntitySet="MaintCheckLog">
+          <ScalarProperty Name="MaintCheckLogId" ColumnName="MaintCheckLogId" />
+          <ScalarProperty Name="MaintCheckLogDate" ColumnName="MaintCheckLogDate" />
+          <ScalarProperty Name="EquipmentId" ColumnName="EquipmentId" />
+          <ScalarProperty Name="MaintCheckId" ColumnName="MaintCheckId" />
+          <ScalarProperty Name="ActualReading" ColumnName="ActualReading" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MaintCheckPartsNotesLog">
+      <EntityTypeMapping TypeName="HOOVERModel.MaintCheckPartsNotesLog">
+        <MappingFragment StoreEntitySet="MaintCheckPartsNotesLog">
+          <ScalarProperty Name="MaintCheckPartsNotesLog1" ColumnName="MaintCheckPartsNotesLog" />
+          <ScalarProperty Name="MaintCheckLogId" ColumnName="MaintCheckLogId" />
+          <ScalarProperty Name="PartsId" ColumnName="PartsId" />
+          <ScalarProperty Name="RepairNotes" ColumnName="RepairNotes" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MaintCheckStep">
+      <EntityTypeMapping TypeName="HOOVERModel.MaintCheckStep">
+        <MappingFragment StoreEntitySet="MaintCheckStep">
+          <ScalarProperty Name="MaintCheckStepId" ColumnName="MaintCheckStepId" />
+          <ScalarProperty Name="MaintCheckId" ColumnName="MaintCheckId" />
+          <ScalarProperty Name="StepDescription" ColumnName="StepDescription" />
+          <ScalarProperty Name="Deprecated" ColumnName="Deprecated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MaintSchedule">
+      <EntityTypeMapping TypeName="HOOVERModel.MaintSchedule">
+        <MappingFragment StoreEntitySet="MaintSchedule">
+          <ScalarProperty Name="MaintScheduleId" ColumnName="MaintScheduleId" />
+          <ScalarProperty Name="EquipmentId" ColumnName="EquipmentId" />
+          <ScalarProperty Name="MaintCheckId" ColumnName="MaintCheckId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Parts">
+      <EntityTypeMapping TypeName="HOOVERModel.Parts">
+        <MappingFragment StoreEntitySet="Parts">
+          <ScalarProperty Name="PartsId" ColumnName="PartsId" />
+          <ScalarProperty Name="PartName" ColumnName="PartName" />
+          <ScalarProperty Name="PartModelNumber" ColumnName="PartModelNumber" />
+          <ScalarProperty Name="PartDescription" ColumnName="PartDescription" />
+          <ScalarProperty Name="PartCost" ColumnName="PartCost" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

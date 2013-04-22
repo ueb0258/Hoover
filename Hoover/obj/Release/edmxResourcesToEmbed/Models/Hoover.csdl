@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HOOVERModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="HOOVEREntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="DailyFuelLog" EntityType="HOOVERModel.DailyFuelLog" />
+    <EntitySet Name="Equipment" EntityType="HOOVERModel.Equipment" />
+    <EntitySet Name="JobMaintLog" EntityType="HOOVERModel.JobMaintLog" />
+    <EntitySet Name="MaintCheck" EntityType="HOOVERModel.MaintCheck" />
+    <EntitySet Name="MaintCheckLog" EntityType="HOOVERModel.MaintCheckLog" />
+    <EntitySet Name="MaintCheckPartsNotesLog" EntityType="HOOVERModel.MaintCheckPartsNotesLog" />
+    <EntitySet Name="MaintCheckStep" EntityType="HOOVERModel.MaintCheckStep" />
+    <EntitySet Name="MaintSchedule" EntityType="HOOVERModel.MaintSchedule" />
+    <EntitySet Name="Parts" EntityType="HOOVERModel.Parts" />
+  </EntityContainer>
+  <EntityType Name="DailyFuelLog">
+    <Key>
+      <PropertyRef Name="DailyFueLogId" />
+    </Key>
+    <Property Name="DailyFueLogId" Type="Int64" Nullable="false" />
+    <Property Name="EquipmentId" Type="Int32" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" />
+    <Property Name="MeterReading" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Fuel" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="EngineOil" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="GearOil" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="HydrolicOil" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="RepairNotes" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Equipment">
+    <Key>
+      <PropertyRef Name="EquipmentId" />
+    </Key>
+    <Property Name="EquipmentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EquipmentNumber" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+    <Property Name="Model" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+    <Property Name="Description" Type="String" MaxLength="1028" Unicode="false" FixedLength="false" />
+    <Property Name="SerialNumber" Type="String" MaxLength="128" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="JobMaintLog">
+    <Key>
+      <PropertyRef Name="MaintId" />
+    </Key>
+    <Property Name="MaintId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MaintDate" Type="DateTime" Nullable="false" />
+    <Property Name="JobId" Type="String" Nullable="false" MaxLength="32" Unicode="false" FixedLength="false" />
+    <Property Name="MeterHours" Type="Int32" Nullable="false" />
+    <Property Name="AccumOprHours" Type="Int32" Nullable="false" />
+    <Property Name="Fuel" Type="Int32" />
+    <Property Name="MotorOil" Type="Int32" />
+    <Property Name="TransOil" Type="Int32" />
+    <Property Name="HydOil" Type="Int32" />
+    <Property Name="FinalDrive" Type="Int32" />
+    <Property Name="AntiFreeze" Type="Int32" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MaintCheck">
+    <Key>
+      <PropertyRef Name="MaintCheckId" />
+    </Key>
+    <Property Name="MaintCheckId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MaintCheckName" Type="String" Nullable="false" MaxLength="128" Unicode="false" FixedLength="false" />
+    <Property Name="MaintCheckDesctription" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="Interval" Type="Int32" Nullable="false" />
+    <Property Name="IntervalTypeId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MaintCheckLog">
+    <Key>
+      <PropertyRef Name="MaintCheckLogId" />
+    </Key>
+    <Property Name="MaintCheckLogId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MaintCheckLogDate" Type="DateTime" Nullable="false" />
+    <Property Name="EquipmentId" Type="Int32" Nullable="false" />
+    <Property Name="MaintCheckId" Type="Int32" Nullable="false" />
+    <Property Name="ActualReading" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MaintCheckPartsNotesLog">
+    <Key>
+      <PropertyRef Name="MaintCheckPartsNotesLog1" />
+    </Key>
+    <Property Name="MaintCheckPartsNotesLog1" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MaintCheckLogId" Type="Int32" Nullable="false" />
+    <Property Name="PartsId" Type="Int32" />
+    <Property Name="RepairNotes" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="MaintCheckStep">
+    <Key>
+      <PropertyRef Name="MaintCheckStepId" />
+    </Key>
+    <Property Name="MaintCheckStepId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MaintCheckId" Type="Int32" Nullable="false" />
+    <Property Name="StepDescription" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="Deprecated" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MaintSchedule">
+    <Key>
+      <PropertyRef Name="MaintScheduleId" />
+    </Key>
+    <Property Name="MaintScheduleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EquipmentId" Type="Int32" Nullable="false" />
+    <Property Name="MaintCheckId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Parts">
+    <Key>
+      <PropertyRef Name="PartsId" />
+    </Key>
+    <Property Name="PartsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PartName" Type="String" Nullable="false" MaxLength="128" Unicode="false" FixedLength="false" />
+    <Property Name="PartModelNumber" Type="String" MaxLength="128" Unicode="false" FixedLength="false" />
+    <Property Name="PartDescription" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="PartCost" Type="Decimal" Precision="18" Scale="0" />
+  </EntityType>
+</Schema>
