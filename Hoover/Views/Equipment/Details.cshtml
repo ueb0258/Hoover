@@ -1,0 +1,43 @@
+﻿@model Hoover.Models.Equipment
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>@Html.DisplayFor(model => model.EquipmentNumber) - @Html.DisplayFor(model => model.Model) - Details</h2>
+
+<fieldset>
+    <legend>Equipment</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.EquipmentNumber)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EquipmentNumber)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Model)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Model)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Description)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Description)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SerialNumber)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SerialNumber)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.EquipmentId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

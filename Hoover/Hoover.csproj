@@ -303,10 +303,12 @@
     </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Equipment\Index.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Properties\PublishProfiles\EdsMacVM.pubxml" />
+    <Content Include="Views\Equipment\Index.cshtml" />
+    <Content Include="Views\Equipment\Details.cshtml" />
+    <Content Include="Views\Equipment\Create.cshtml" />
+    <Content Include="Views\Equipment\Edit.cshtml" />
+    <Content Include="Views\Equipment\Delete.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
