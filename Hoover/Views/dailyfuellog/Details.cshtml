@@ -1,0 +1,71 @@
+﻿@model Hoover.Models.DailyFuelLog
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>DailyFuelLog</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Equipment.EquipmentNumber)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Equipment.EquipmentNumber)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Date)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Date)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MeterReading)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MeterReading)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Fuel)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Fuel)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.EngineOil)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EngineOil)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.GearOil)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.GearOil)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.HydrolicOil)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.HydrolicOil)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.RepairNotes)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.RepairNotes)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.DailyFueLogId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
