@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="HOOVERModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="HOOVERModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="HOOVERModelStoreContainer">
           <EntitySet Name="DailyFuelLog" EntityType="HOOVERModel.Store.DailyFuelLog" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Equipment" EntityType="HOOVERModel.Store.Equipment" store:Type="Tables" Schema="dbo" />
@@ -15,12 +15,16 @@
           <EntitySet Name="MaintCheckStep" EntityType="HOOVERModel.Store.MaintCheckStep" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="MaintSchedule" EntityType="HOOVERModel.Store.MaintSchedule" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Parts" EntityType="HOOVERModel.Store.Parts" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_DailyFuelLog_Equipment_EquipmentId" Association="HOOVERModel.Store.FK_DailyFuelLog_Equipment_EquipmentId">
+            <End Role="Equipment" EntitySet="Equipment" />
+            <End Role="DailyFuelLog" EntitySet="DailyFuelLog" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="DailyFuelLog">
           <Key>
             <PropertyRef Name="DailyFueLogId" />
           </Key>
-          <Property Name="DailyFueLogId" Type="bigint" Nullable="false" />
+          <Property Name="DailyFueLogId" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="EquipmentId" Type="int" Nullable="false" />
           <Property Name="Date" Type="date" Nullable="false" />
           <Property Name="MeterReading" Type="decimal" />
@@ -113,8 +117,19 @@
           <Property Name="PartDescription" Type="varchar(max)" />
           <Property Name="PartCost" Type="decimal" />
         </EntityType>
-      </Schema>
-    </edmx:StorageModels>
+        <Association Name="FK_DailyFuelLog_Equipment_EquipmentId">
+          <End Role="Equipment" Type="HOOVERModel.Store.Equipment" Multiplicity="1" />
+          <End Role="DailyFuelLog" Type="HOOVERModel.Store.DailyFuelLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipment">
+              <PropertyRef Name="EquipmentId" />
+            </Principal>
+            <Dependent Role="DailyFuelLog">
+              <PropertyRef Name="EquipmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="HOOVERModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
@@ -128,6 +143,10 @@
           <EntitySet Name="MaintCheckStep" EntityType="HOOVERModel.MaintCheckStep" />
           <EntitySet Name="MaintSchedule" EntityType="HOOVERModel.MaintSchedule" />
           <EntitySet Name="Parts" EntityType="HOOVERModel.Parts" />
+          <AssociationSet Name="FK_DailyFuelLog_Equipment_EquipmentId" Association="HOOVERModel.FK_DailyFuelLog_Equipment_EquipmentId">
+            <End Role="Equipment" EntitySet="Equipment" />
+            <End Role="DailyFuelLog" EntitySet="DailyFuelLog" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="DailyFuelLog">
           <Key>
@@ -142,6 +161,7 @@
           <Property Name="GearOil" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="HydrolicOil" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="RepairNotes" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Equipment" Relationship="HOOVERModel.FK_DailyFuelLog_Equipment_EquipmentId" FromRole="DailyFuelLog" ToRole="Equipment" />
         </EntityType>
         <EntityType Name="Equipment">
           <Key>
@@ -152,6 +172,7 @@
           <Property Name="Model" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
           <Property Name="Description" Type="String" MaxLength="1028" Unicode="false" FixedLength="false" />
           <Property Name="SerialNumber" Type="String" MaxLength="128" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="DailyFuelLog" Relationship="HOOVERModel.FK_DailyFuelLog_Equipment_EquipmentId" FromRole="Equipment" ToRole="DailyFuelLog" />
         </EntityType>
         <EntityType Name="JobMaintLog">
           <Key>
@@ -226,6 +247,18 @@
           <Property Name="PartDescription" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
           <Property Name="PartCost" Type="Decimal" Precision="18" Scale="0" />
         </EntityType>
+        <Association Name="FK_DailyFuelLog_Equipment_EquipmentId">
+          <End Type="HOOVERModel.Equipment" Role="Equipment" Multiplicity="1" />
+          <End Type="HOOVERModel.DailyFuelLog" Role="DailyFuelLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipment">
+              <PropertyRef Name="EquipmentId" />
+            </Principal>
+            <Dependent Role="DailyFuelLog">
+              <PropertyRef Name="EquipmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -352,7 +385,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
       </DesignerInfoPropertySet>
     </Options>
@@ -368,6 +401,10 @@
         <EntityTypeShape EntityType="HOOVERModel.MaintCheckStep" Width="1.5" PointX="6.75" PointY="3.75" Height="1.7879850260416674" IsExpanded="true" />
         <EntityTypeShape EntityType="HOOVERModel.MaintSchedule" Width="1.5" PointX="4.75" PointY="6.75" Height="1.5956835937499996" IsExpanded="true" />
         <EntityTypeShape EntityType="HOOVERModel.Parts" Width="1.5" PointX="6.75" PointY="6.75" Height="1.9802864583333317" IsExpanded="true" />
+        <AssociationConnector Association="HOOVERModel.FK_DailyFuelLog_Equipment_EquipmentId" >
+          <ConnectorPoint PointX="2.75" PointY="1.8362939453125" />
+          <ConnectorPoint PointX="2.25" PointY="1.8362939453125" />
+        </AssociationConnector>
       </Diagram>
     </Diagrams>
   </Designer>

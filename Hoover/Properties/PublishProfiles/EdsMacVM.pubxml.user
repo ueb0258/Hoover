@@ -33,7 +33,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/21/2013 15:59:47</publishTime>
     </File>
     <File Include="bin/Hoover.dll">
-      <publishTime>04/23/2013 15:25:27</publishTime>
+      <publishTime>05/02/2013 20:49:59</publishTime>
     </File>
     <File Include="bin/Microsoft.Web.Infrastructure.dll">
       <publishTime>04/21/2013 16:00:03</publishTime>
@@ -90,7 +90,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/21/2013 16:00:10</publishTime>
     </File>
     <File Include="Content/Site.css">
-      <publishTime>04/21/2013 15:59:32</publishTime>
+      <publishTime>04/27/2013 10:58:24</publishTime>
     </File>
     <File Include="Content/themes/base/images/ui-bg_flat_0_aaaaaa_40x100.png">
       <publishTime>04/21/2013 16:00:03</publishTime>
@@ -377,6 +377,24 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/Account/_SetPasswordPartial.cshtml">
       <publishTime>04/21/2013 15:59:32</publishTime>
     </File>
+    <File Include="Views/DailyFuelLog/Create.cshtml">
+      <publishTime>05/02/2013 20:49:13</publishTime>
+    </File>
+    <File Include="Views/DailyFuelLog/Delete.cshtml">
+      <publishTime>05/02/2013 17:39:42</publishTime>
+    </File>
+    <File Include="Views/DailyFuelLog/Details.cshtml">
+      <publishTime>05/02/2013 17:39:41</publishTime>
+    </File>
+    <File Include="Views/DailyFuelLog/Edit.cshtml">
+      <publishTime>05/02/2013 17:39:42</publishTime>
+    </File>
+    <File Include="Views/DailyFuelLog/Index.cshtml">
+      <publishTime>05/02/2013 20:38:29</publishTime>
+    </File>
+    <File Include="Views/DailyFuelLog/Report.cshtml">
+      <publishTime>05/02/2013 20:41:25</publishTime>
+    </File>
     <File Include="Views/Equipment/Create.cshtml">
       <publishTime>04/23/2013 15:21:21</publishTime>
     </File>
@@ -390,7 +408,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/23/2013 15:22:28</publishTime>
     </File>
     <File Include="Views/Equipment/Index.cshtml">
-      <publishTime>04/23/2013 15:18:32</publishTime>
+      <publishTime>05/02/2013 20:39:11</publishTime>
     </File>
     <File Include="Views/Home/About.cshtml">
       <publishTime>04/21/2013 15:59:32</publishTime>
@@ -405,7 +423,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/21/2013 15:59:32</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>04/21/2013 17:20:19</publishTime>
+      <publishTime>05/02/2013 20:48:31</publishTime>
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
       <publishTime>04/21/2013 15:59:32</publishTime>
@@ -417,7 +435,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/21/2013 15:59:32</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>04/23/2013 15:25:28</publishTime>
+      <publishTime>05/02/2013 20:49:59</publishTime>
     </File>
   </ItemGroup>
 </Project>

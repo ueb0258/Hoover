@@ -10,6 +10,10 @@
     <EntitySet Name="MaintCheckStep" EntityType="HOOVERModel.MaintCheckStep" />
     <EntitySet Name="MaintSchedule" EntityType="HOOVERModel.MaintSchedule" />
     <EntitySet Name="Parts" EntityType="HOOVERModel.Parts" />
+    <AssociationSet Name="FK_DailyFuelLog_Equipment_EquipmentId" Association="HOOVERModel.FK_DailyFuelLog_Equipment_EquipmentId">
+      <End Role="Equipment" EntitySet="Equipment" />
+      <End Role="DailyFuelLog" EntitySet="DailyFuelLog" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="DailyFuelLog">
     <Key>
@@ -24,6 +28,7 @@
     <Property Name="GearOil" Type="Decimal" Precision="18" Scale="0" />
     <Property Name="HydrolicOil" Type="Decimal" Precision="18" Scale="0" />
     <Property Name="RepairNotes" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Equipment" Relationship="HOOVERModel.FK_DailyFuelLog_Equipment_EquipmentId" FromRole="DailyFuelLog" ToRole="Equipment" />
   </EntityType>
   <EntityType Name="Equipment">
     <Key>
@@ -34,6 +39,7 @@
     <Property Name="Model" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
     <Property Name="Description" Type="String" MaxLength="1028" Unicode="false" FixedLength="false" />
     <Property Name="SerialNumber" Type="String" MaxLength="128" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="DailyFuelLog" Relationship="HOOVERModel.FK_DailyFuelLog_Equipment_EquipmentId" FromRole="Equipment" ToRole="DailyFuelLog" />
   </EntityType>
   <EntityType Name="JobMaintLog">
     <Key>
@@ -108,4 +114,16 @@
     <Property Name="PartDescription" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
     <Property Name="PartCost" Type="Decimal" Precision="18" Scale="0" />
   </EntityType>
+  <Association Name="FK_DailyFuelLog_Equipment_EquipmentId">
+    <End Type="HOOVERModel.Equipment" Role="Equipment" Multiplicity="1" />
+    <End Type="HOOVERModel.DailyFuelLog" Role="DailyFuelLog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Equipment">
+        <PropertyRef Name="EquipmentId" />
+      </Principal>
+      <Dependent Role="DailyFuelLog">
+        <PropertyRef Name="EquipmentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

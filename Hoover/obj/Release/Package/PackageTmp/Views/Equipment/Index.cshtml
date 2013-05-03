@@ -7,7 +7,7 @@
 <h2>Equipment List</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Add New Equipment", "Create")
 </p>
 <table>
     <tr>
@@ -42,8 +42,8 @@
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.EquipmentId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.EquipmentId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.EquipmentId })
+            @Html.ActionLink("Delete", "Delete", new { id=item.EquipmentId }) |
+            @Html.ActionLink("Report", "Report", "DailyFuelLog", new { equipmentId = item.EquipmentId }, null)
         </td>
     </tr>
 }

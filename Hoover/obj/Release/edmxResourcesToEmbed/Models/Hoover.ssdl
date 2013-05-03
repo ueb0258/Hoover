@@ -10,12 +10,16 @@
     <EntitySet Name="MaintCheckStep" EntityType="HOOVERModel.Store.MaintCheckStep" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="MaintSchedule" EntityType="HOOVERModel.Store.MaintSchedule" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Parts" EntityType="HOOVERModel.Store.Parts" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_DailyFuelLog_Equipment_EquipmentId" Association="HOOVERModel.Store.FK_DailyFuelLog_Equipment_EquipmentId">
+      <End Role="Equipment" EntitySet="Equipment" />
+      <End Role="DailyFuelLog" EntitySet="DailyFuelLog" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="DailyFuelLog">
     <Key>
       <PropertyRef Name="DailyFueLogId" />
     </Key>
-    <Property Name="DailyFueLogId" Type="bigint" Nullable="false" />
+    <Property Name="DailyFueLogId" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="EquipmentId" Type="int" Nullable="false" />
     <Property Name="Date" Type="date" Nullable="false" />
     <Property Name="MeterReading" Type="decimal" />
@@ -108,4 +112,16 @@
     <Property Name="PartDescription" Type="varchar(max)" />
     <Property Name="PartCost" Type="decimal" />
   </EntityType>
+  <Association Name="FK_DailyFuelLog_Equipment_EquipmentId">
+    <End Role="Equipment" Type="HOOVERModel.Store.Equipment" Multiplicity="1" />
+    <End Role="DailyFuelLog" Type="HOOVERModel.Store.DailyFuelLog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Equipment">
+        <PropertyRef Name="EquipmentId" />
+      </Principal>
+      <Dependent Role="DailyFuelLog">
+        <PropertyRef Name="EquipmentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

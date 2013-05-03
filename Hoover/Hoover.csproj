@@ -164,6 +164,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\DailyFuelLogController.cs" />
     <Compile Include="Controllers\EquipmentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
@@ -309,6 +310,12 @@
     <Content Include="Views\Equipment\Create.cshtml" />
     <Content Include="Views\Equipment\Edit.cshtml" />
     <Content Include="Views\Equipment\Delete.cshtml" />
+    <Content Include="Views\DailyFuelLog\Index.cshtml" />
+    <Content Include="Views\DailyFuelLog\Details.cshtml" />
+    <Content Include="Views\DailyFuelLog\Create.cshtml" />
+    <Content Include="Views\DailyFuelLog\Edit.cshtml" />
+    <Content Include="Views\DailyFuelLog\Delete.cshtml" />
+    <Content Include="Views\DailyFuelLog\Report.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

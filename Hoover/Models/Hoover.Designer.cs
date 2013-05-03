@@ -17,6 +17,12 @@ using System.Runtime.Serialization;
 using System.Xml.Serialization;
 
 [assembly: EdmSchemaAttribute()]
+#region EDM Relationship Metadata
+
+[assembly: EdmRelationshipAttribute("HOOVERModel", "FK_DailyFuelLog_Equipment_EquipmentId", "Equipment", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Hoover.Models.Equipment), "DailyFuelLog", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Hoover.Models.DailyFuelLog), true)]
+
+#endregion
+
 namespace Hoover.Models
 {
     #region Contexts
@@ -544,6 +550,48 @@ namespace Hoover.Models
         #endregion
 
     
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("HOOVERModel", "FK_DailyFuelLog_Equipment_EquipmentId", "Equipment")]
+        public Equipment Equipment
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Equipment>("HOOVERModel.FK_DailyFuelLog_Equipment_EquipmentId", "Equipment").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Equipment>("HOOVERModel.FK_DailyFuelLog_Equipment_EquipmentId", "Equipment").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Equipment> EquipmentReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Equipment>("HOOVERModel.FK_DailyFuelLog_Equipment_EquipmentId", "Equipment");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Equipment>("HOOVERModel.FK_DailyFuelLog_Equipment_EquipmentId", "Equipment", value);
+                }
+            }
+        }
+
+        #endregion
+
     }
     
     /// <summary>
@@ -701,6 +749,32 @@ namespace Hoover.Models
         #endregion
 
     
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("HOOVERModel", "FK_DailyFuelLog_Equipment_EquipmentId", "DailyFuelLog")]
+        public EntityCollection<DailyFuelLog> DailyFuelLog
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<DailyFuelLog>("HOOVERModel.FK_DailyFuelLog_Equipment_EquipmentId", "DailyFuelLog");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<DailyFuelLog>("HOOVERModel.FK_DailyFuelLog_Equipment_EquipmentId", "DailyFuelLog", value);
+                }
+            }
+        }
+
+        #endregion
+
     }
     
     /// <summary>
