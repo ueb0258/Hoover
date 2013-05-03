@@ -1,0 +1,74 @@
+﻿@model Hoover.Models.DailyFuelLog
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>DailyFuelLog</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Equipment.EquipmentNumber)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Equipment.EquipmentNumber)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Date)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Date)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MeterReading)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MeterReading)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Fuel)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Fuel)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.EngineOil)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EngineOil)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.GearOil)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.GearOil)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.HydrolicOil)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.HydrolicOil)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.RepairNotes)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.RepairNotes)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

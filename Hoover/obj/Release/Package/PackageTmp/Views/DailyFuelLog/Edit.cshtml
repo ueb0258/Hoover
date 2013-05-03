@@ -1,0 +1,93 @@
+﻿@model Hoover.Models.DailyFuelLog
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>DailyFuelLog</legend>
+
+        @Html.HiddenFor(model => model.DailyFueLogId)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.EquipmentId, "Equipment")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("EquipmentId", String.Empty)
+            @Html.ValidationMessageFor(model => model.EquipmentId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Date)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Date)
+            @Html.ValidationMessageFor(model => model.Date)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.MeterReading)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MeterReading)
+            @Html.ValidationMessageFor(model => model.MeterReading)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Fuel)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Fuel)
+            @Html.ValidationMessageFor(model => model.Fuel)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.EngineOil)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.EngineOil)
+            @Html.ValidationMessageFor(model => model.EngineOil)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.GearOil)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.GearOil)
+            @Html.ValidationMessageFor(model => model.GearOil)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.HydrolicOil)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.HydrolicOil)
+            @Html.ValidationMessageFor(model => model.HydrolicOil)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.RepairNotes)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.RepairNotes)
+            @Html.ValidationMessageFor(model => model.RepairNotes)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

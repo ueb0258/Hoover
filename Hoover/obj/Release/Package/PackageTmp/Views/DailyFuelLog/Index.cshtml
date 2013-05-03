@@ -1,0 +1,76 @@
+﻿@model IEnumerable<Hoover.Models.DailyFuelLog>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Add New Log", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Equipment.EquipmentNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MeterReading)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fuel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EngineOil)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GearOil)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HydrolicOil)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RepairNotes)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Equipment.EquipmentNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date.Month)/
+            @Html.DisplayFor(modelItem => item.Date.Day)/
+            @Html.DisplayFor(modelItem => item.Date.Year)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MeterReading)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fuel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EngineOil)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GearOil)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HydrolicOil)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RepairNotes)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.DailyFueLogId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.DailyFueLogId })
+        </td>
+    </tr>
+}
+
+</table>
